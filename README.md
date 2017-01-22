@@ -14,9 +14,9 @@ Now your FAF database is up and running and contains some dummy data (from `db-d
 
 Currently supported flags for `setup_db.sh`:
 
-    -d                   Dump DB schema to container STDOUT.
-    -c file              Dump DB schema to provided file location. If a directory is provided, the file name will be dump.sql.
-    -h                   Print script command line options."
+    -d         Dump DB schema to container STDOUT.
+    -c <file>  Dump DB schema to provided file location. If a directory is provided, the file name will be dump.sql.
+    -h         Print script command line options.
 
 ## Update your Database
 

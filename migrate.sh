@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script helps running database migration.
+# This script helps running database migrations.
 
 if [ -z "$1" ]; then
     read -p "Name or ID of docker container: " docker_container
