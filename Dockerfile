@@ -1,7 +1,6 @@
 FROM mysql:5.7
 
 ENV FLYWAY_VERSION 4.0.3
-ENV MYSQL_DATABASE faf
 
 # Install mysql_config which allows to set up a no-password login with --login-path
 RUN apt-get update -y > /dev/null && apt-get install -y libmysqlclient-dev wget > /dev/null

@@ -1,3 +1,4 @@
+USE `faf`;
 -- MySQL dump 10.13  Distrib 5.7.15, for Linux (x86_64)
 --
 -- Host: localhost    Database: faf_lobby
