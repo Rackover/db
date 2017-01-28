@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -x
 
 create() {
@@ -6,10 +6,12 @@ create() {
   username=$2
   password=$3
 
-  echo "CREATE DATABASE IF NOT EXISTS \`${database}\`;
-  CREATE USER '${username}'@'%' IDENTIFIED BY '${password}';
-  GRANT ALL PRIVILEGES ON \`${database}\`.* TO '${username}'@'%'" \
-    | mysql --user=root --password=${MYSQL_ROOT_PASSWORD}
+  mysql --user=root --password=${MYSQL_ROOT_PASSWORD} <<SQL_SCRIPT
+    CREATE DATABASE IF NOT EXISTS \`${database}\`;
+    CREATE USER '${username}'@'%' IDENTIFIED BY '${password}';
+    GRANT ALL PRIVILEGES ON \`${database}\`.* TO '${username}'@'%';
+    FLUSH PRIVILEGES;
+SQL_SCRIPT
 }
 
 create "faf" "faf-api" "${MYSQL_API_PASSWORD}"
