@@ -21,13 +21,15 @@ RUN wget -q http://search.maven.org/remotecontent?filepath=net/java/dev/jna/jna/
 COPY healthcheck.sh /
 RUN chmod +x healthcheck.sh
 
-# Copy migration scripts
-COPY migrations/* /flyway/sql/
+HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD ["./healthcheck.sh"]
 
 # Copy init scripts which will be executed automatically if the database doesn't exist yet
 COPY init/* /docker-entrypoint-initdb.d/
 RUN chmod +x /docker-entrypoint-initdb.d/*.sh
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD ["./healthcheck.sh"]
+# Copy migration scripts
+COPY migrate.sh /migrate
+RUN chmod +x migrate
+COPY migrations/* /flyway/sql/
 
 EXPOSE 3306

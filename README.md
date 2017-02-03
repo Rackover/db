@@ -22,7 +22,7 @@ Currently supported flags for `setup_db.sh`:
 
 If you have an existing database which you need to update, run:
 
-    ./migrate.sh faf-db
+    docker exec -ti faf-db migrate
 
 ## Connect to your Database
 
