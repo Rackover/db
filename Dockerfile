@@ -28,8 +28,8 @@ COPY init/* /docker-entrypoint-initdb.d/
 RUN chmod +x /docker-entrypoint-initdb.d/*.sh
 
 # Copy migration scripts
-COPY migrate.sh /migrate
-RUN chmod +x migrate
+COPY migrate.sh /
+RUN chmod +x migrate.sh
 COPY migrations/* /flyway/sql/
 
 EXPOSE 3306
